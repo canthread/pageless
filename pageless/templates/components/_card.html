@@ -1,0 +1,5 @@
+<article class="c-card">
+  <h3>{% if item.data.url %}<a href="{{ item.data.url }}" rel="noopener">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</h3>
+  <div class="c-prose">{{ item.body | paragraphs }}</div>
+  {% if item.tags %}<ul class="c-tags">{% for t in item.tags %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
+</article>

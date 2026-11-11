@@ -1,0 +1,6 @@
+{% set item = items[p.contentId] %}
+<section class="c-hero">
+  <h1 data-field="heading">{{ p.heading }}</h1>
+  {% if p.subheading %}<p class="c-hero__sub" data-field="subheading">{{ p.subheading }}</p>{% endif %}
+  <div class="c-prose">{{ item.body | paragraphs }}</div>
+</section>

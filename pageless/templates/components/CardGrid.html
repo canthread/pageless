@@ -1,0 +1,6 @@
+<section class="c-cardgrid">
+  {% if p.heading %}<h2 data-field="heading">{{ p.heading }}</h2>{% endif %}
+  <div class="c-cardgrid__grid">
+  {% for id in p.contentIds %}{% set item = items[id] %}{% include "components/_card.html" %}{% endfor %}
+  </div>
+</section>

@@ -1,0 +1,9 @@
+<section class="c-richtext">
+  {% if p.heading %}<h2 data-field="heading">{{ p.heading }}</h2>{% endif %}
+  {% for id in p.contentIds %}{% set item = items[id] %}
+  <article class="c-prose">
+    {% if not p.heading or p.contentIds | length > 1 %}<h3>{{ item.title }}</h3>{% endif %}
+    {{ item.body | paragraphs }}
+  </article>
+  {% endfor %}
+</section>

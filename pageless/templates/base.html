@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ chrome.profile.name }}{% endblock %}</title>
+  <meta name="description" content="{{ chrome.profile.summary }}">
+  <link rel="stylesheet" href="/static/pageless.css">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <a class="skip" href="#page">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/">{{ chrome.profile.name }}</a>
+    <nav aria-label="Main">
+      <ul>
+      {% for r in chrome.nav %}
+        <li><a href="{{ r.path }}"{% if current and current.path == r.path %} aria-current="page"{% endif %}>{{ r.title }}</a></li>
+      {% endfor %}
+      </ul>
+    </nav>
+  </header>
+  {% block main %}{% endblock %}
+  <footer class="site-footer">
+    <ul>
+    {% for link in chrome.profile.required_links %}
+      <li><a href="{{ link.url }}" rel="me noopener">{{ link.label }}</a></li>
+    {% endfor %}
+    </ul>
+    <p>This page was composed for you from {{ chrome.profile.name }}'s records.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<section class="c-timeline">
+  {% if p.heading %}<h2 data-field="heading">{{ p.heading }}</h2>{% endif %}
+  <ol>
+  {% for id in p.contentIds %}{% set item = items[id] %}
+    <li>
+      <p class="c-timeline__when">{{ item.data.start }}{% if item.data.end %}–{{ item.data.end }}{% endif %}</p>
+      <h3>{{ item.title }}{% if item.data.org %} <span class="c-timeline__org">· {{ item.data.org }}</span>{% endif %}</h3>
+      <div class="c-prose">{{ item.body | paragraphs }}</div>
+    </li>
+  {% endfor %}
+  </ol>
+</section>

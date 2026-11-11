@@ -1,0 +1,10 @@
+<section class="c-contact">
+  {% if p.heading %}<h2 data-field="heading">{{ p.heading }}</h2>{% endif %}
+  {% if p.contentId %}{% set item = items[p.contentId] %}
+  <div class="c-prose">{{ item.body | paragraphs }}</div>
+  {% if item.data.email %}<p><a class="c-button" href="mailto:{{ item.data.email }}">{{ item.data.email }}</a></p>{% endif %}
+  {% endif %}
+  <ul class="c-links">
+  {% for link in ctx.profile.required_links %}<li><a href="{{ link.url }}" rel="me noopener">{{ link.label }}</a></li>{% endfor %}
+  </ul>
+</section>

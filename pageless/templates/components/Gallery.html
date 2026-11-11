@@ -1,0 +1,8 @@
+<section class="c-gallery">
+  {% if p.heading %}<h2 data-field="heading">{{ p.heading }}</h2>{% endif %}
+  <div class="c-gallery__grid">
+  {% for id in p.assetIds %}{% set a = assets[id] %}
+    <figure><img src="{{ a.url }}" alt="{{ a.alt_text }}" loading="lazy"><figcaption>{{ a.alt_text }}</figcaption></figure>
+  {% endfor %}
+  </div>
+</section>

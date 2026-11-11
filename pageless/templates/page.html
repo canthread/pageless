@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ current.title }} · {{ chrome.profile.name }}{% endblock %}
+{% block head %}
+  {% if not ssr %}
+  <noscript><meta http-equiv="refresh" content="0;url={{ current.path }}?static=1"></noscript>
+  <script src="/static/pageless.js" defer></script>
+  {% endif %}
+{% endblock %}
+{% block main %}
+<main id="page" class="pl-page{% if ssr %} is-done{% endif %}"
+      {% if ssr %}aria-busy="false"{% else %}aria-busy="true" data-pl-stream="/_stream?path={{ current.path | urlencode }}"{% endif %}>
+  <div class="pl-grid">
+  {% for s in sections %}
+    <div class="pl-block is-ready" data-id="{{ s.id }}" data-component="{{ s.component }}" style="--span:{{ s.span }};--order:{{ s.order }}">{{ s.html | safe }}</div>
+  {% endfor %}
+  </div>
+  <p class="pl-status" role="status" aria-live="polite"></p>
+</main>
+{% endblock %}

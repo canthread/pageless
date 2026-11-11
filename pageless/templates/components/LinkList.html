@@ -1,0 +1,7 @@
+<section class="c-linklist">
+  {% if p.heading %}<h2 data-field="heading">{{ p.heading }}</h2>{% endif %}
+  <ul class="c-links">
+  {% for path in p.routes %}<li><a href="{{ path }}">{{ route_title(path) }}</a></li>{% endfor %}
+  {% for url in p.urls %}<li><a href="{{ url }}" rel="noopener">{{ url_label(url) }}</a></li>{% endfor %}
+  </ul>
+</section>
